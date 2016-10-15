@@ -15,6 +15,8 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import java.util.LinkedList;
 import java.util.List;
 
+import cn.zeffect.apk.googletest.windowsmanger.WMActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         List<String> list = new LinkedList<>();
         list.add("BottomSheetDialog");
+        list.add("WindowManager测试");
         Adapter adapter = new Adapter(list);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             public void SimpleOnItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
                 if (i == 0) {
                     gotoTargit(BottomSheetDialogActivity.class);
+                } else if (i == 1) {
+                    gotoTargit(WMActivity.class);
                 }
             }
         });
