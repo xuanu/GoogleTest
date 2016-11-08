@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/aic2_scaly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="缩放"/>
+
+            <RadioButton
+                android:id="@+id/aic2_pen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="笔迹"/>
+
+            <RadioButton
+                android:id="@+id/aic2_erase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="橡皮"/>
+
+            <Button
+                android:id="@+id/aic2_random_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="随机"/>
+
+            <Button
+                android:id="@+id/aic2_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保存"/>
+
+            <Button
+                android:id="@+id/aic2_change_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="换图"/>
+        </RadioGroup>
+    </HorizontalScrollView>
+
+
+    <FrameLayout
+        android:id="@+id/aic2_fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>

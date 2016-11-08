@@ -7,3 +7,10 @@
     
 # 功能2，WindowManager的一些问题测试  
 - > 见文章：[WindowManager的一些问题记录](http://zeffect.cn/index.php/archives/16/)    
+  
+#  功能3， 在图片上面写写画画的功能1  
+- 自定义View实现，监听onTouch
+- 两个问题，图片保存大小，橡皮没有实现。  
+
+# 功能4  图片上面写写画画  
+- > 修改自：[Graffiti](https://github.com/1993hzw/Graffiti)  

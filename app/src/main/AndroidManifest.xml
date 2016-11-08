@@ -18,8 +18,15 @@
         </activity>
         <activity android:name=".BottomSheetDialogActivity"></activity>
         <activity android:name=".windowsmanger.WMActivity"></activity>
+        <activity android:name=".imagecanvas.ImageCanvasActivity"></activity>
+        <activity android:name=".ImageCanvas2.ImageCanvas2"></activity>
 
         <service android:name=".windowsmanger.WMService"></service>
+        <receiver android:name=".startapp.StartAppReceiver">
+            <intent-filter>
+                <action android:name="cn.zeffect.apk.googletest.startapp"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

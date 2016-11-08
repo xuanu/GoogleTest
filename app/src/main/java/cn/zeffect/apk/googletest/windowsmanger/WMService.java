@@ -81,8 +81,8 @@ public class WMService extends Service {
                 @Override
                 public void onClick(View view) {
                     mManager.removeView(layoutWM);
-                    mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
-                    mManager.addView(layoutWM, mParams);
+//                    mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+//                    mManager.addView(layoutWM, mParams);
                 }
             });
         }

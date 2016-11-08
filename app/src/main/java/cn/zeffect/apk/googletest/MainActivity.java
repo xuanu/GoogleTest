@@ -15,6 +15,8 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import java.util.LinkedList;
 import java.util.List;
 
+import cn.zeffect.apk.googletest.ImageCanvas2.ImageCanvas2;
+import cn.zeffect.apk.googletest.imagecanvas.ImageCanvasActivity;
 import cn.zeffect.apk.googletest.windowsmanger.WMActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,8 +26,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         List<String> list = new LinkedList<>();
-        list.add("BottomSheetDialog");
-        list.add("WindowManager测试");
+        list.add("BottomSheetDialog");//0
+        list.add("WindowManager测试");//1
+        list.add("图片上面写写画画");//2
+        list.add("图片上面写写画画2");//3
+        list.add("收到广播启动应用");//4
         Adapter adapter = new Adapter(list);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -37,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
                     gotoTargit(BottomSheetDialogActivity.class);
                 } else if (i == 1) {
                     gotoTargit(WMActivity.class);
+                } else if (i == 2) {
+                    gotoTargit(ImageCanvasActivity.class);
+                } else if (i == 3) {
+                    gotoTargit(ImageCanvas2.class);
                 }
             }
         });
