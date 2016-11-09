@@ -14,3 +14,6 @@
 
 # 功能4  图片上面写写画画  
 - > 修改自：[Graffiti](https://github.com/1993hzw/Graffiti)  
+
+# 功能5 收到一个广播，启动本应用  
+# 功能6 socket连接测试  

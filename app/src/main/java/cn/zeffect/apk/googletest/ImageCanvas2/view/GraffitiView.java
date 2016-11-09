@@ -90,10 +90,16 @@ public class GraffitiView extends View {
 
     private float mTouchDownX, mTouchDownY, mLastTouchX, mLastTouchY, mTouchX, mTouchY;
     private Matrix mShaderMatrix, mShaderMatrix4C;
+    /**
+     *
+     */
+    private int mPhotoW = 0, mPhotoH = 0;
 
     public GraffitiView(Context context, Bitmap bitmap, GraffitiListener listener) {
         super(context);
         mBitmap = bitmap;
+        mPhotoH = mBitmap.getHeight();
+        mPhotoW = mBitmap.getWidth();
         mGraffitiListener = listener;
         if (mGraffitiListener == null) {
             throw new RuntimeException("GraffitiListener is null!!!");
@@ -151,9 +157,14 @@ public class GraffitiView extends View {
                 mTouchDownX = mTouchX = mLastTouchX = event.getX();
                 mTouchDownY = mTouchY = mLastTouchY = event.getY();
 
-                mTouchX += VALUE; // 为了仅点击时也能出现绘图，模拟滑动一个像素点
-                mTouchY += VALUE;
+//                mTouchX += VALUE; // 为了仅点击时也能出现绘图，模拟滑动一个像素点
+//                mTouchY += VALUE;
 
+                float tempX = toX(mTouchX);
+                float tempY = toY(mTouchY);
+                if (tempX < 0 || tempY < 0 || tempX > mPhotoW || tempY > mPhotoH) {//点击位置不在图片上
+                    return true;
+                }
                 if (mPen == Pen.COPY && mCopyLocation.isInIt(toX4C(mTouchX), toY4C(mTouchY))) { // 点击copy
                     mCopyLocation.isRelocating = true;
                     mCopyLocation.isCopying = false;

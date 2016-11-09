@@ -17,6 +17,7 @@ import java.util.List;
 
 import cn.zeffect.apk.googletest.ImageCanvas2.ImageCanvas2;
 import cn.zeffect.apk.googletest.imagecanvas.ImageCanvasActivity;
+import cn.zeffect.apk.googletest.sockettest.SocketActivity;
 import cn.zeffect.apk.googletest.windowsmanger.WMActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         list.add("图片上面写写画画");//2
         list.add("图片上面写写画画2");//3
         list.add("收到广播启动应用");//4
+        list.add("socket连接测试");//5
         Adapter adapter = new Adapter(list);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     gotoTargit(ImageCanvasActivity.class);
                 } else if (i == 3) {
                     gotoTargit(ImageCanvas2.class);
+                } else if (i == 5) {
+                    gotoTargit(SocketActivity.class);
                 }
             }
         });
