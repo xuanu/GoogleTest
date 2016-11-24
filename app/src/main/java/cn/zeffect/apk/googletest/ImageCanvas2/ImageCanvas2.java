@@ -67,7 +67,9 @@ public class ImageCanvas2 extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton pButton, boolean pB) {
                 if (pB) {
-                    mGraffitiView.setPen(GraffitiView.Pen.ERASER);
+//                    mGraffitiView.setPen(GraffitiView.Pen.ERASER);
+                    mGraffitiView.setPen(GraffitiView.Pen.HAND);
+                    mGraffitiView.setColor(0xffffffff);
                 }
             }
         });

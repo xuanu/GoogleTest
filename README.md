@@ -17,3 +17,5 @@
 
 # 功能5 收到一个广播，启动本应用  
 # 功能6 socket连接测试  
+  
+#  功能7 SD卡多目录检测，集成自[SDcardScanner](https://github.com/gongshoudao/SDcardScanner)  

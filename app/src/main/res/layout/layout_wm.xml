@@ -5,6 +5,10 @@
                 android:background="#123456"
                 android:orientation="vertical">
 
+    <cn.zeffect.apk.googletest.windowsmanger.ScrawlView.panel.SketchPadView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <Button
         android:id="@+id/lw_btn"
         android:layout_width="wrap_content"

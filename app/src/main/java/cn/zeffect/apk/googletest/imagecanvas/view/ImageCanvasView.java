@@ -82,6 +82,8 @@ public class ImageCanvasView extends ImageView {
         mPaint.setStrokeWidth(10);
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
+        mPaint.setStrokeJoin(Paint.Join.ROUND);
+        mPaint.setStrokeCap(Paint.Cap.ROUND);// 圆滑
     }
 
     @Override
@@ -153,7 +155,7 @@ public class ImageCanvasView extends ImageView {
             float cX = (x + nextX) / 2;
             float cY = (y + nextY) / 2;
             //二次贝塞尔，实现平滑曲线；previousX, previousY为操作点，cX, cY为终点
-            mPath.moveTo(x, y);
+//            mPath.moveTo(x, y);
             mPath.quadTo(cX, cY, nextX, nextY);
             canvas.drawPath(mPath, mPaint);
 //            canvas.drawLine(x, y, nextX, nextY, mPaint);

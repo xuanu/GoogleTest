@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +23,8 @@
         <activity android:name=".imagecanvas.ImageCanvasActivity"></activity>
         <activity android:name=".ImageCanvas2.ImageCanvas2"></activity>
         <activity android:name=".sockettest.SocketActivity"></activity>
+        <activity android:name=".imagecanvas3.ImageCanvasActivit3"></activity>
+        <activity android:name=".path.PathActivity"></activity>
 
         <service android:name=".windowsmanger.WMService"></service>
         <receiver android:name=".startapp.StartAppReceiver">

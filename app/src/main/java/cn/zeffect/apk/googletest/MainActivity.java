@@ -17,6 +17,8 @@ import java.util.List;
 
 import cn.zeffect.apk.googletest.ImageCanvas2.ImageCanvas2;
 import cn.zeffect.apk.googletest.imagecanvas.ImageCanvasActivity;
+import cn.zeffect.apk.googletest.imagecanvas3.ImageCanvasActivit3;
+import cn.zeffect.apk.googletest.path.PathActivity;
 import cn.zeffect.apk.googletest.sockettest.SocketActivity;
 import cn.zeffect.apk.googletest.windowsmanger.WMActivity;
 
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         list.add("图片上面写写画画2");//3
         list.add("收到广播启动应用");//4
         list.add("socket连接测试");//5
+        list.add("写写画画3");//6
+        list.add("取本地文件目录");//7
         Adapter adapter = new Adapter(list);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -50,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
                     gotoTargit(ImageCanvas2.class);
                 } else if (i == 5) {
                     gotoTargit(SocketActivity.class);
+                } else if (i == 6) {
+                    gotoTargit(ImageCanvasActivit3.class);
+                } else if (i == 7) {
+                    gotoTargit(PathActivity.class);
                 }
             }
         });

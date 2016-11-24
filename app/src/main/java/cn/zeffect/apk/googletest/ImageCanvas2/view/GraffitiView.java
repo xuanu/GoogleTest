@@ -69,7 +69,8 @@ public class GraffitiView extends View {
     public enum Pen {
         HAND, // 手绘
         COPY, // 仿制
-        ERASER // 橡皮擦
+        ERASER, // 橡皮擦
+        MOVE
     }
 
     /**
@@ -114,7 +115,7 @@ public class GraffitiView extends View {
     public void init() {
 
         mScale = 1f;
-        mPaintSize = 30;
+        mPaintSize = dp2px(getContext(), 5);
         mColor = new GraffitiColor(Color.RED);
         mPaint = new Paint();
         mPaint.setStrokeWidth(mPaintSize);
@@ -123,14 +124,14 @@ public class GraffitiView extends View {
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);// 圆滑
         mPenPaint = new Paint();
-        mPenPaint.setTextSize(sp2px(12));
+        mPenPaint.setTextSize(sp2px(20));
         mPenPaint.setStyle(Paint.Style.FILL);
         mPenPaint.setStrokeWidth(1);
         mPenPaint.setColor(mColor.mColor);
         mPenPaint.setAntiAlias(true);
         mPenPaint.setStrokeJoin(Paint.Join.ROUND);
         mPenPaint.setStrokeCap(Paint.Cap.ROUND);// 圆滑
-        mPen = Pen.COPY;
+        mPen = Pen.HAND;
         mShape = Shape.HAND_WRITE;
 
         this.mBitmapShader = new BitmapShader(this.mBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
@@ -244,7 +245,11 @@ public class GraffitiView extends View {
                     mLastTouchY = mTouchY;
                     mTouchX = event.getX();
                     mTouchY = event.getY();
-
+                    float tempMoveX = toX(mTouchX);
+                    float tempMoveY = toY(mTouchY);
+                    if (tempMoveX < 0 || tempMoveY < 0 || tempMoveX > mPhotoW || tempMoveY > mPhotoH) {//点击位置不在图片上
+                        return true;
+                    }
                     if (mCopyLocation.isRelocating) { // 正在定位location
                         mCopyLocation.updateLocation(toX4C(mTouchX), toY4C(mTouchY));
                     } else {
@@ -991,10 +996,10 @@ public class GraffitiView extends View {
      * @param pText 绘制文字
      */
     public void drawTextInPic(String pText) {
-        int x = new Random().nextInt(getWidth());
-        int y = new Random().nextInt(getHeight());
+        int x = new Random().nextInt(mPhotoW);
+        int y = new Random().nextInt(mPhotoH);
         if (mBitmapCanvas != null) {
-            mBitmapCanvas.drawText(pText, toX(x), toY(y), mPenPaint);
+            mBitmapCanvas.drawText(pText, x, y, mPenPaint);
             invalidate();
         }
     }
@@ -1007,5 +1012,16 @@ public class GraffitiView extends View {
      */
     private int sp2px(float sp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, getContext().getResources().getDisplayMetrics());
+    }
+
+    /**
+     * dp转px
+     *
+     * @param context 上下文
+     * @param dpVal   dp值
+     * @return px值
+     */
+    public int dp2px(Context context, float dpVal) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, context.getResources().getDisplayMetrics());
     }
 }
