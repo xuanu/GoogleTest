@@ -7,6 +7,7 @@ import android.app.usage.UsageStatsManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -60,13 +61,15 @@ public class WMService extends Service {
         return null;
     }
 
+    private boolean isLock = false;
+
     private void creatFullFloatWindow() {
         if (mManager == null) {
             mParams = new WindowManager.LayoutParams();
             mManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-            mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
-//            mParams.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
-            mParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_FULLSCREEN;
+            mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+//            mParams.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE;
+            mParams.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
             mParams.gravity = Gravity.LEFT | Gravity.TOP;
             mParams.x = 0;
             mParams.y = 0;
@@ -80,13 +83,33 @@ public class WMService extends Service {
             layoutWM.findViewById(R.id.lw_btn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+//                    updateLayoutView(isLock = !isLock);
                     mManager.removeView(layoutWM);
-//                    mParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
-//                    mManager.addView(layoutWM, mParams);
                 }
             });
         }
+//        String temp = Build.MANUFACTURER + " " + Build.DEVICE;
         mManager.addView(layoutWM, mParams);
+    }
+
+    /**
+     * 根据是否锁屏，更新布局信息
+     *
+     * @param isLockScreen
+     */
+    private void updateLayoutView(boolean isLockScreen) {
+        int typte = mParams.type;
+        int setType = 0;
+        if (isLockScreen) {
+            setType = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
+        } else {
+            setType = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        }
+        if (typte != setType) {
+            mParams.type = setType;
+            mManager.removeView(layoutWM);
+            mManager.addView(layoutWM, mParams);
+        }
     }
 
     private void showPop() {

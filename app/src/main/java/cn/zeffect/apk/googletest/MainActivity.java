@@ -12,6 +12,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //
+
+
+        //
         List<String> list = new LinkedList<>();
         list.add("BottomSheetDialog");//0
         list.add("WindowManager测试");//1
